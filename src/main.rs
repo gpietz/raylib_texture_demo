@@ -27,10 +27,11 @@ fn main() {
 
         let screen_width : f32 = draw_handle.get_screen_width() as f32;
         let screen_height_halved : f32 = draw_handle.get_screen_height() as f32 / 2.0;
-        let texture_height_halved : f32 = texture_2d.height() as f32;
+        let texture_height :f32  = texture_2d.height() as f32;
+        let texture_height_halved : f32 = texture_height / 2.0;
         let vertical_offset = screen_height_halved - texture_height_halved;
 
-        let target_rect = Rectangle::new(0.0, vertical_offset, screen_width, 16.0);
+        let target_rect = Rectangle::new(0.0, vertical_offset, screen_width, texture_height);
         let tiling = target_rect.width / texture_2d.width() as f32;
 
         draw_handle.draw_texture_quad(
